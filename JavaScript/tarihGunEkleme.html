@@ -1,0 +1,27 @@
+<!DOCTYPE html>                                                                         <!--Öncelikle bir html5 taglarımızı yazalım-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Js Seçili Tarihe Gün Ekleme</title>
+</head>
+
+<body style="text-align: center; margin-top: 100px;">
+    <p><input type="date" id="t"></p>                                                   <!--input:date tarih girdi almamızı sağlıyor-->
+    <p><input type="text" id="sayi"></p>                                                <!--tarihe gün eklemek için kullanıcıdan girdi-->
+    <p><input type="button" value="Hesapla" onclick="hesap()"></p>                      <!--onclick event ile fonksiyon çağrılır-->
+    <p><input type="text" id="sonuc"></p>                                               <!--sonucumuzu ekrana yazdırabileceğimiz yer-->
+
+    <script>
+        function hesap() {                                                              //  script tagları arasına hesap fonsiyonu tanımlarız.
+            var d = document.getElementById("t").value;                                 //  tarih verisini (değer) kısmından ulaşabiliriz, bunu da bir değişkene tanımlarız.
+            var t = new Date(d);                                                        //  elimizdeki değişken string bir ifade olduğundan bir tarih nesnesi olarak bu şekilde tanımlarız.
+            var s = parseInt(document.getElementById("sayi").value);                    //  burası çok önemli elimizdeki sayı değişkenini int türünden bir değişkene çevirip değişkene atamalıyız.
+            t.setDate(t.getDate() + s);                                                 //  tarih nesnesini setDate metodu ile yeni gün verebiliriz, bizde var olan gün ile bizi verdiğimiz gün sayısını toplam şeklinde verirsek istediğimiz sonucu elde ederiz (burada önemli olan (benimde başıma geldi) vereceğimiz değişken integer türünden bir değişken olmalı)
+            var f = t.getDate() + "." + (t.getMonth() + 1) + "." + t.getFullYear();     //  tarih formatının istediğiniz şekilde  verebilirsiniz, ama önemli olan ay'a bir eklemeyiz çünkü indexlendiği için 0 dan başlıyor
+            document.getElementById("sonuc").value = f;                                 //  ekrana hazırladığımız tarih formatı basarız.
+        }
+    </script>
+</body>
+
+</html>

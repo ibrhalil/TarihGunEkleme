@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery Seçili Tarihe Gün Ekleme</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+</head>
+
+<body style="text-align: center; margin-top: 100px;">
+    <p><input type="date" id="t"></p>
+    <p><input type="text" id="sayi"></p>
+    <p><input type="button" value="Hesapla"></p>
+    <p><input type="text" id="sonuc"></p>
+
+    <script>
+        $(function () {
+            $(":button").click(function (e) {
+                var d = $("#t").val();
+                var t = new Date(d);
+                var s = parseInt($("#sayi").val());
+                t.setDate(t.getDate() + s);
+                var f = t.getDate() + "." + (t.getMonth() + 1) + "." + t.getFullYear();
+                $("#sonuc").val(f);
+            });
+        });
+    </script>
+</body>
+
+</html>
